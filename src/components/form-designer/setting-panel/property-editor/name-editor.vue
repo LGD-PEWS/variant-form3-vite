@@ -7,7 +7,7 @@
       </span>
     </template>
     <template v-if="!!selectedWidget.category || noFieldList">
-      <el-input type="text" v-model="optionModel.name" :readonly="widgetNameReadonly" @change="updateWidgetNameAndRef"></el-input>
+      <el-input type="text" v-model="name" :readonly="widgetNameReadonly" @change="updateWidgetNameAndRef"></el-input>
     </template>
     <template v-else>
       <el-select v-model="optionModel.name" allow-create filterable :disabled="widgetNameReadonly" @change="updateWidgetNameAndRef"
@@ -41,6 +41,9 @@
       }
     },
     computed: {
+      name() {
+        return this.optionModel.name = this.optionModel.label
+      },
       noFieldList() {
         return !this.serverFieldList || (this.serverFieldList.length <= 0)
       },
