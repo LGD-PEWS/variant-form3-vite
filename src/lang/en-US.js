@@ -158,6 +158,7 @@ export default {
       preview: 'Preview',
       importJson: 'Import',
       exportJson: 'Export',
+      export: 'Export',
       exportCode: 'Codes',
       generateCode: 'Generate Code',
       generateSFC: 'Generate SFC',

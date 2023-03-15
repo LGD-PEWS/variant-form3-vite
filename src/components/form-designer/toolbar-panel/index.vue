@@ -5,14 +5,14 @@
         <svg-icon icon-class="undo" /></el-button>
       <el-button link type="primary" :disabled="redoDisabled" :title="i18nt('designer.toolbar.redoHint')" @click="redoHistory">
         <svg-icon icon-class="redo" /></el-button>
-      <el-button-group style="margin-left: 20px">
+      <!-- <el-button-group style="margin-left: 20px">
         <el-button :type="layoutType === 'PC' ? 'info': ''" @click="changeLayoutType('PC')">
           {{i18nt('designer.toolbar.pcLayout')}}</el-button>
         <el-button :type="layoutType === 'Pad' ? 'info': ''" @click="changeLayoutType('Pad')">
           {{i18nt('designer.toolbar.padLayout')}}</el-button>
         <el-button :type="layoutType === 'H5' ? 'info': ''" @click="changeLayoutType('H5')">
           {{i18nt('designer.toolbar.mobileLayout')}}</el-button>
-      </el-button-group>
+      </el-button-group> -->
       <el-button style="margin-left: 20px" :title="i18nt('designer.toolbar.nodeTreeHint')" @click="showNodeTreeDrawer">
         <svg-icon icon-class="node-tree" /></el-button>
     </div>
@@ -33,6 +33,8 @@
           {{i18nt('designer.toolbar.importJson')}}</el-button>
         <el-button v-if="showToolButton('exportJsonButton')" link type="primary" @click="exportJson">
           {{i18nt('designer.toolbar.exportJson')}}</el-button>
+        <el-button v-if="showToolButton('exportButton')" link type="primary" @click="exportJs">
+          {{i18nt('designer.toolbar.export')}}</el-button>
         <el-button v-if="showToolButton('exportCodeButton')" link type="primary" @click="exportCode">
           {{i18nt('designer.toolbar.exportCode')}}</el-button>
         <el-button v-if="showToolButton('generateSFCButton')" link type="primary" @click="generateSFC">
@@ -522,6 +524,15 @@
         this.jsonRawContent = JSON.stringify({widgetList, formConfig})
         this.showExportJsonDialogFlag = true
       },
+      exportJs(e) {
+        let widgetList = deepClone(this.designer.widgetList)
+        let formConfig = deepClone(this.designer.formConfig)
+        this.jsonContent = JSON.stringify({widgetList, formConfig}, null, '  ')
+        this.jsonRawContent = JSON.stringify({widgetList, formConfig})
+        this.copyFormJson(e)
+        // this.showExportJsonDialogFlag = true
+      },
+
 
       copyFormJson(e) {
         copyToClipboard(this.jsonRawContent, e,
@@ -749,7 +760,7 @@
     overflow: hidden;
 
     .right-toolbar-con {
-      text-align: left;
+      // text-align: left;
       width: 600px;
     }
 

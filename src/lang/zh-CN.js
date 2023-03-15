@@ -158,6 +158,7 @@ export default {
       preview: '预览',
       importJson: '导入JSON',
       exportJson: '导出JSON',
+      export: '发布',
       exportCode: '导出代码',
       generateCode: '生成代码',
       generateSFC: '生成SFC',
