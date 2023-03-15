@@ -154,10 +154,11 @@
     mounted() {
       //this.loadWidgets()
 
-      this.scrollerHeight = window.innerHeight - 56 + 'px'
+      // this.scrollerHeight = window.innerHeight - 56 + 'px'
+      this.scrollerHeight = window.innerHeight - 0 + 'px'
       addWindowResizeHandler(() => {
         this.$nextTick(() => {
-          this.scrollerHeight = window.innerHeight - 56 + 'px'
+          this.scrollerHeight = window.innerHeight - 0 + 'px'
           //console.log(this.scrollerHeight)
         })
       })

@@ -10,7 +10,7 @@
 
 <template>
   <el-container class="main-container full-height">
-    <el-header class="main-header">
+    <!-- <el-header class="main-header">
       <div class="float-left main-title">
         <img src="../../assets/vform-logo.png" @click="openHome">
         <span class="bold">VForm 3</span> {{i18nt('application.productTitle')}} <span class="version-span">Ver {{vFormVersion}}</span></div>
@@ -30,7 +30,7 @@
         <a v-if="showLink('externalLink')" href="javascript:void(0)" @click="(ev) => openUrl(ev, subScribeUrl)" target="_blank">
           {{i18nt('application.subscription')}}<i class="el-icon-top-right"></i></a>
       </div>
-    </el-header>
+    </el-header> -->
 
     <el-container>
       <el-aside class="side-panel">
@@ -168,6 +168,7 @@
     mounted() {
       this.initLocale()
 
+      // this.scrollerHeight = window.innerHeight - 56 - 36 + 'px'
       this.scrollerHeight = window.innerHeight - 56 - 36 + 'px'
       addWindowResizeHandler(() => {
         this.$nextTick(() => {
