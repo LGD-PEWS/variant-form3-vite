@@ -1,14 +1,15 @@
 <template>
   <el-config-provider :locale="elLocale">
-  <div id="app">
-    <VFormDesigner ref="vfDesignerRef" :global-dsv="globalDsv">
-      <!--
-      <template #customToolButtons>
-        <el-button type="text" @click="doTest">测试btn</el-button>
-      </template>
-      -->
-    </VFormDesigner>
-  </div>
+    <div id="app">
+      <VFormDesigner ref="vfDesignerRef" :global-dsv="globalDsv">
+
+        <!-- <template #customToolButtons>
+          <el-button type="text" @click="doTest">测试btn</el-button>
+          <el-button type="text" @click="saveFormJson">保存</el-button>
+        </template> -->
+
+      </VFormDesigner>
+    </div>
   </el-config-provider>
 </template>
 
@@ -49,6 +50,12 @@ export default {
     doTest() {
       let fieldList = this.$refs.vfDesignerRef.getFieldWidgets(null, true)
       console.log('test', fieldList)
+    },
+    saveFormJson() {
+      let formJson = this.$refs.vfDesignerRef.getFormJson()
+      console.log(formJson)
+      //TODO: 将formJson提交给后端保存接口，需自行实现！！
+      // ElMessage.success('表单已保存！')
     }
 
   }
@@ -56,7 +63,7 @@ export default {
 </script>
 
 <style lang="scss">
-  #app {
-    height: 100%;
-  }
+#app {
+  height: 100%;
+}
 </style>
